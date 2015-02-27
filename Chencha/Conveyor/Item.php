@@ -9,6 +9,16 @@
 namespace Chencha\Conveyor;
 
 
-class Item {
+abstract class Item
+{
+    protected $response;
+
+    /**
+     * @return mixed
+     */
+    public function getResponse()
+    {
+        return $this->response;
+    }
 
 }

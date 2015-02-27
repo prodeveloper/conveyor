@@ -31,11 +31,21 @@ class Engine
     protected function _runSynchronous(Belt $belt)
     {
         $machines = $belt->getSynchronousMachines();
-        $items = $belt->getItems();
+        $items = $belt->getSubjects();
+        $this->_doSynchronousRun($machines, $items);
+    }
+
+    /**
+     * @param $machines
+     * @param $items
+     */
+    protected function _doSynchronousRun($machines, $items)
+    {
         foreach ($machines as $machine) {
             foreach ($items as $item) {
                 $machine->handle($item);
             }
         }
     }
+
 }

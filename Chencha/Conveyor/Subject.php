@@ -9,7 +9,7 @@
 namespace Chencha\Conveyor;
 
 
-abstract class Item
+abstract class Subject
 {
     protected $response;
 

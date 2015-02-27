@@ -5,7 +5,7 @@ namespace spec\Chencha\Mocks;
 use Chencha\Mocks\NonRelatedItem;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-use Chencha\Mocks\Item;
+use Chencha\Mocks\SampleSubject;
 
 class MachineMockSpec extends ObjectBehavior
 {
@@ -16,7 +16,7 @@ class MachineMockSpec extends ObjectBehavior
 
     function it_passes_handle()
     {
-        $item = new Item();
+        $item = new SampleSubject();
         $this->handle($item)->shouldReturn(true);
     }
     function it_doesnt_handle_unrelated(){

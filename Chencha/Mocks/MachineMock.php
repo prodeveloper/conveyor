@@ -12,7 +12,7 @@ use Chencha\Conveyor\Machine;
 
 class MachineMock extends Machine
 {
-    function actsOnItem($item)
+    function actsOnSampleSubject($item)
     {
         return true;
     }

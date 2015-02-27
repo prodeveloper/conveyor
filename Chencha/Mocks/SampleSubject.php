@@ -7,8 +7,8 @@
  */
 
 namespace Chencha\Mocks;
-use Chencha\Conveyor\Item as O_Item;
+use Chencha\Conveyor\Subject as O_Item;
 
-class Item extends O_Item{
+class SampleSubject extends O_Item{
 
 }

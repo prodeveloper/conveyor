@@ -2,8 +2,11 @@
 
 namespace spec\Chencha\Conveyor;
 
+use Chencha\Conveyor\Belt;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
+use Chencha\Conveyor\Machine;
+use Chencha\Mocks\SampleSubject;
 
 class EngineSpec extends ObjectBehavior
 {
@@ -11,4 +14,5 @@ class EngineSpec extends ObjectBehavior
     {
         $this->shouldHaveType('Chencha\Conveyor\Engine');
     }
+
 }

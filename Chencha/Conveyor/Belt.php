@@ -28,7 +28,7 @@ class Belt
     /**
      * @param mixed $item
      */
-    public function addItem(Item $item)
+    public function addSubject(Subject $item)
     {
         $this->items[] = $item;
     }
@@ -68,7 +68,7 @@ class Belt
     /**
      * @return array
      */
-    public function getItems()
+    public function getSubjects()
     {
         return $this->items;
     }

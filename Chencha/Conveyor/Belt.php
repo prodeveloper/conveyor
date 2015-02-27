@@ -11,16 +11,26 @@ namespace Chencha\Conveyor;
 
 class Belt
 {
-    protected $item;
-    protected $synchronous_machines;
-    protected $asynchronous_machines;
+    /**
+     * @var array
+     */
+    protected $items = [];
+
+    /**
+     * @var array
+     */
+    protected $synchronous_machines = [];
+    /**
+     * @var array
+     */
+    protected $asynchronous_machines = [];
 
     /**
      * @param mixed $item
      */
-    public function setItem($item)
+    public function addItem(Item $item)
     {
-        $this->item = $item;
+        $this->items[] = $item;
     }
 
     /**
@@ -37,6 +47,30 @@ class Belt
     public function setAsynchronousMachines(array $asynchronous_machines)
     {
         $this->asynchronous_machines = $asynchronous_machines;
+    }
+
+    /**
+     * @return array
+     */
+    public function getSynchronousMachines()
+    {
+        return $this->synchronous_machines;
+    }
+
+    /**
+     * @return array
+     */
+    public function getAsynchronousMachines()
+    {
+        return $this->asynchronous_machines;
+    }
+
+    /**
+     * @return array
+     */
+    public function getItems()
+    {
+        return $this->items;
     }
 
 

@@ -7,6 +7,7 @@ use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Chencha\Mocks\NotMachineMock;
 use Chencha\Conveyor\Exceptions\InvalidMachineException;
+use Illuminate\Support\Collection;
 
 class BeltMockSpec extends ObjectBehavior
 {
@@ -26,6 +27,6 @@ class BeltMockSpec extends ObjectBehavior
     {
         $machine = new MachineMock();
         $this->registerMachines($machine);
-        $this->getMachines()->shouldBeLike([$machine]);
+        $this->getMachines()->toArray()->shouldBeLike([get_class($machine)=>$machine]);
     }
 }

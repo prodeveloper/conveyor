@@ -11,11 +11,12 @@ namespace Chencha\Conveyor;
 use Chencha\Conveyor\Machine;
 use Chencha\Conveyor\Exceptions\InvalidMachineException;
 use Illuminate\Support\MessageBag;
+use Illuminate\Support\Collection;
 
 abstract class Belt
 {
     /**
-     * @var array
+     * @var Collection
      */
     protected $machines;
     protected $response;
@@ -23,6 +24,11 @@ abstract class Belt
      * @var MessageBag
      */
     protected $errors;
+
+    function __construct()
+    {
+        $this->machines = new Collection();
+    }
 
 
     function registerMachines()
@@ -32,7 +38,7 @@ abstract class Belt
             if (!is_a(func_get_arg($i), Machine::class)) {
                 throw new InvalidMachineException(get_class(func_get_arg($i)) . " is not a valid machine");
             }
-            $this->machines[] = func_get_arg($i);
+            $this->machines->put(get_class(func_get_arg($i)), func_get_arg($i));
         }
     }
 

@@ -10,20 +10,19 @@ namespace Chencha\Conveyor;
 
 use Chencha\Conveyor\Belt;
 use Chencha\Conveyor\Machine;
+use DI\Test\IntegrationTest\Fixtures\InheritanceTest\SubClass;
 
 class Engine
 {
-    function run(Belt $belt)
+    function run(Subject $subject,Belt $belt)
     {
-        $this->_runAsynchronous($belt);
-        $this->_runSynchronous($belt);
+        $machines=$belt->getMachines();
+        foreach($machines as $machine){
 
+        }
     }
 
-    protected function _runAsynchronous(Belt $belt)
-    {
 
-    }
 
     /**
      * @param Belt $belt
@@ -33,19 +32,6 @@ class Engine
         $machines = $belt->getSynchronousMachines();
         $items = $belt->getSubjects();
         $this->_doSynchronousRun($machines, $items);
-    }
-
-    /**
-     * @param $machines
-     * @param $items
-     */
-    protected function _doSynchronousRun($machines, $items)
-    {
-        foreach ($machines as $machine) {
-            foreach ($items as $item) {
-                $machine->handle($item);
-            }
-        }
     }
 
 }

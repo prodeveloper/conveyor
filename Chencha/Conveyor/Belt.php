@@ -8,70 +8,32 @@
 
 namespace Chencha\Conveyor;
 
+use Chencha\Conveyor\Machine;
+use Chencha\Conveyor\Exceptions\InvalidMachineException;
 
-class Belt
+abstract class Belt
 {
     /**
      * @var array
      */
-    protected $items = [];
+    protected $machines;
 
-    /**
-     * @var array
-     */
-    protected $synchronous_machines = [];
-    /**
-     * @var array
-     */
-    protected $asynchronous_machines = [];
-
-    /**
-     * @param mixed $item
-     */
-    public function addSubject(Subject $item)
+    function registerMachines()
     {
-        $this->items[] = $item;
-    }
-
-    /**
-     * @param array $synchronous_machines
-     */
-    public function setSynchronousMachines(array $synchronous_machines)
-    {
-        $this->synchronous_machines = $synchronous_machines;
-    }
-
-    /**
-     * @param array $asynchronous_machines
-     */
-    public function setAsynchronousMachines(array $asynchronous_machines)
-    {
-        $this->asynchronous_machines = $asynchronous_machines;
+        $no_args = func_num_args();
+        for ($i = 0; $i < $no_args; $i++) {
+            if (!is_a(func_get_arg($i), Machine::class)) {
+                throw new InvalidMachineException(get_class(func_get_arg($i)) . " is not a valid machine");
+            }
+            $this->machines[] = func_get_arg($i);
+        }
     }
 
     /**
      * @return array
      */
-    public function getSynchronousMachines()
+    public function getMachines()
     {
-        return $this->synchronous_machines;
+        return $this->machines;
     }
-
-    /**
-     * @return array
-     */
-    public function getAsynchronousMachines()
-    {
-        return $this->asynchronous_machines;
-    }
-
-    /**
-     * @return array
-     */
-    public function getSubjects()
-    {
-        return $this->items;
-    }
-
-
 }

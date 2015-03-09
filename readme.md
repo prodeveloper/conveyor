@@ -19,9 +19,9 @@
     $subject=new User("email"=>"test@test.com","password"=>"good_password");
     $registrationBelt->run($subject);
     
-    $registrationBelt->getResponse();
-    $registrationBelt->hasError();
-    $registrationBelt->getErrors();
+    $subject->getResponse();
+    $subject->hasError();
+    $subject->getErrors();
     
 ##Exception
     StopBeltException //This exceptions will stop the belt before next group is called

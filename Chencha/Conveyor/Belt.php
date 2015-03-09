@@ -7,10 +7,7 @@
  */
 
 namespace Chencha\Conveyor;
-
-use Chencha\Conveyor\Machine;
 use Chencha\Conveyor\Exceptions\InvalidMachineException;
-use Illuminate\Support\MessageBag;
 use Illuminate\Support\Collection;
 
 abstract class Belt
@@ -19,11 +16,6 @@ abstract class Belt
      * @var Collection
      */
     protected $machines;
-    protected $response;
-    /**
-     * @var MessageBag
-     */
-    protected $errors;
 
     function __construct()
     {
@@ -43,16 +35,11 @@ abstract class Belt
     }
 
     /**
-     * @return array
+     * @return Collection
      */
     public function getMachines()
     {
         return $this->machines;
     }
 
-    public function boot()
-    {
-        $this->errors = new MessageBag();
-        $this->response = null;
-    }
 }

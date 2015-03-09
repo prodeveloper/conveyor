@@ -11,10 +11,11 @@
     $belt=new RegistrationBelt(); //Extends Chencha\Conveyor\Belt
     $belt->registerMachines($validators,$db,$alerts); //Registered groups are temporal
     
-    Chencha\Conveyor::registerBelt($belt);
+    $mainConveyor=new Chencha\Conveyor();
+    $mainConveyor->registerBelt($belt);
 ###Running Code
 
-    $registrationBelt=Chencha\Conveyor::make(RegistrationBelt::class);
+    $registrationBelt =$mainConveyor->makeBelt(RegistrationBelt::class);
     $subject=new User("email"=>"test@test.com","password"=>"good_password");
     $registrationBelt->run($subject);
     

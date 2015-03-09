@@ -10,6 +10,7 @@ namespace Chencha;
 
 
 use Chencha\Conveyor\Belt;
+use Chencha\Conveyor\Exceptions\BeltDoesNotExist;
 
 class Conveyor
 {
@@ -23,6 +24,9 @@ class Conveyor
 
     function makeBelt($beltName)
     {
+        if (!isset($this->belts[$beltName])) {
+            throw new BeltDoesNotExist("Undefined {$beltName}");
+        }
         return $this->belts[$beltName];
     }
 }

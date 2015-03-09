@@ -15,7 +15,6 @@
     }
   },
   "require": {
-    "mnapoli/php-di": "dev-master",
     "phpspec/phpspec": "~2.1@dev",
     "illuminate/support": "~5.1@dev",
     "jeremeamia/superclosure": "~2.0@dev",

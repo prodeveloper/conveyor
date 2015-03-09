@@ -47,7 +47,14 @@ For users of laravel 5.* The package ships with a facade. To use the facade
 
 ##Deploy status
 
-    This system is not ready for use heavy changes expected coming days
+    This system is not ready for production use changes expected coming days
+    
+##Examples
+
+To check the examples please see
+
+- /var/www/personal/conveyor/examples/process_example.php
+- /var/www/personal/conveyor/examples/belt_example.php
     
  
     

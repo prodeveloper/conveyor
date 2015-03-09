@@ -8,7 +8,7 @@
     $userDbBelt->registerMachines(SaveInDatabase(), new UpdateElastic()); 
     
     $mainConveyor=new Chencha\Conveyor();
-    $mainConveyor->registerBelt($userDbBelt);
+    $mainConveyor->registerBelt($userBelt);
 ###Running Belt
 
     $userDbBelt =$mainConveyor->makeBelt(UserDbBelt::class);
@@ -25,7 +25,7 @@ Processes are belts that are chained together.
 To stop a process before the next belt. A StopBeltException should be thrown.
     
     $userRegistration= new RegistrationProcess();
-    $userRegistration->registerBelts($userValidation,$userDbBelt,$userAlertBelt); //Ordering is important
+    $userRegistration->registerBelts($userValidation,$userDbBelt); //Ordering is important
     $mainConveyor->registerProcess($userRegistration);
     
 ###Running a process

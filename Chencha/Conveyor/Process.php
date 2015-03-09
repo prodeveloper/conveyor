@@ -18,6 +18,10 @@ abstract class Process
      * @var Collection
      */
     protected $belts;
+    /**
+     * @var Engine
+     */
+    protected $engine;
 
     function __construct()
     {
@@ -36,11 +40,25 @@ abstract class Process
 
     }
 
+    public function run($subject)
+    {
+        $this->engine->runProcess($subject, $this);
+    }
+
     /**
      * @return Collection
      */
     public function getBelts()
     {
         return $this->belts;
+    }
+
+    /**
+     * @Inject
+     * @param Engine $engine
+     */
+    public function setEngine($engine)
+    {
+        $this->engine = $engine;
     }
 }

@@ -6,6 +6,6 @@
  * Time: 13:51
  */
 
-class RegistrationProcess {
+class RegistrationProcess extends \Chencha\Conveyor\Process {
 
 }

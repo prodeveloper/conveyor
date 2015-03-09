@@ -25,11 +25,11 @@ Processes are belts that are chained together.
 To stop a process before the next belt. A StopBeltException should be thrown.
     
     $userRegistration= new RegistrationProcess();
-    $userRegistration->registerConveyors($userValidation,$userDbBelt,$userAlertBelt); //Ordering is important
+    $userRegistration->registerBelts($userValidation,$userDbBelt,$userAlertBelt); //Ordering is important
     $mainConveyor->registerProcess($userRegistration);
     
 ###Running a process
-    $userRegistrationProcess=$mainConveyor->makeBelt(RegistrationProcess::class);
+    $userRegistrationProcess=$mainConveyor->makeProcess(RegistrationProcess::class);
     $userRegistrationProcess->run($user);
      
 ##Exception

@@ -7,6 +7,7 @@
  */
 
 namespace Chencha\Conveyor;
+
 use Chencha\Conveyor\Exceptions\InvalidMachineException;
 use Illuminate\Support\Collection;
 
@@ -16,6 +17,11 @@ abstract class Belt
      * @var Collection
      */
     protected $machines;
+    /**
+     * @var Engine
+     */
+    protected $engine;
+
 
     function __construct()
     {
@@ -40,6 +46,20 @@ abstract class Belt
     public function getMachines()
     {
         return $this->machines;
+    }
+
+    public function run($subject)
+    {
+        return $this->engine->runBelt($subject, $this);
+    }
+
+    /**
+     * @Inject
+     * @param Engine $engine
+     */
+    public function setEngine($engine)
+    {
+        $this->engine = $engine;
     }
 
 }

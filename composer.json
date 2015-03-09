@@ -1,0 +1,23 @@
+{
+  "name": "chencha/conveyor",
+  "description": "A convey system for commands and requests",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Chencha Jacob",
+      "email": "jmokua@gmail.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "autoload": {
+    "psr-4": {
+      "Chencha\\": "Chencha"
+    }
+  },
+  "require": {
+    "phpspec/phpspec": "~2.1@dev",
+    "illuminate/support": "~5.1@dev",
+    "jeremeamia/superclosure": "~2.0@dev",
+    "symfony/var-dumper": "~3.0@dev"
+  }
+}

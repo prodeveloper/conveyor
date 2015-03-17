@@ -7,8 +7,12 @@
     $userDbBelt=new UserDbBelt(); //Extends Chencha\Conveyor\Belt
     $userDbBelt->registerMachines(SaveInDatabase(), new UpdateElastic()); 
     
+Machines extend *\Chencha\Conveyor\Machine*
+
     $mainConveyor=new Chencha\Conveyor();
     $mainConveyor->registerBelt($userBelt);
+    
+  
 ###Running Belt
 
     $userDbBelt =$mainConveyor->makeBelt(UserDbBelt::class);
@@ -33,17 +37,9 @@ To stop a process before the next belt. A StopBeltException should be thrown.
     $userRegistrationProcess->run($user);
      
 ##Exception
-    StopBeltException //This exceptions will stop the belt before next group is called
-    FatalBeltException //Stop belt immediately
+    StopProcessException //This exceptions will stop the process before next belt is run
+All other exceptions bubble up immediately
   
-  
-##Laravel Deployment
-
-For users of laravel 5.* The package ships with a facade. To use the facade
-
-1. Open your *config/app.php*
-2. Register *Chencha\Conveyor\ConveyorServiceProvider* in your providers array 
-3. Add the facade *Chencha\Conveyor* to your aliases array
 
 ##Deploy status
 
@@ -53,8 +49,8 @@ For users of laravel 5.* The package ships with a facade. To use the facade
 
 To check the examples please see
 
-- /var/www/personal/conveyor/examples/process_example.php
-- /var/www/personal/conveyor/examples/belt_example.php
+- examples/process_example.php
+- examples/belt_example.php
     
  
     

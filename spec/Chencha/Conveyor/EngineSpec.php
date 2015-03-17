@@ -4,11 +4,13 @@ namespace spec\Chencha\Conveyor;
 
 use Chencha\Mocks\BeltMock;
 use Chencha\Mocks\MachineMock;
+use Chencha\Mocks\MachineWithProcessError;
 use Chencha\Mocks\ProcessMock;
 use Chencha\Mocks\SampleSubject;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Prophecy\Prophet;
+use Chencha\Conveyor\Exceptions\StopProcessException;
 
 class EngineSpec extends ObjectBehavior
 {
@@ -46,5 +48,21 @@ class EngineSpec extends ObjectBehavior
         $this->runProcess($subject, $process);
         $prophet->checkPredictions();
 
+    }
+    function it_ignores_process_exception_in_belt(){
+        $subject = new SampleSubject();
+        $machine= new MachineWithProcessError();
+        $belt = new BeltMock();
+        $belt->registerMachines($machine);
+        $this->runBelt($subject,$belt);
+    }
+    function it_rethrows_process_exception(){
+        $subject = new SampleSubject();
+        $machine= new MachineWithProcessError();
+        $belt = new BeltMock();
+        $belt->registerMachines($machine);
+        $process = new ProcessMock();
+        $process->registerBelts($belt);
+        $this->shouldThrow(StopProcessException::class)->during('runProcess',[$subject,$process]);
     }
 }

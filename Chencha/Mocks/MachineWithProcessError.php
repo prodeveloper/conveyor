@@ -6,9 +6,15 @@
  * Time: 23:43
  */
 
-namespace Mocks;
+namespace Chencha\Mocks;
 
+use Chencha\Conveyor\Exceptions\StopProcessException;
+use Chencha\Conveyor\Machine;
 
-class MachineWithProcessError {
-
+class MachineWithProcessError extends Machine
+{
+    function actsOnSampleSubject($item)
+    {
+        throw new StopProcessException("Test Process");
+    }
 }

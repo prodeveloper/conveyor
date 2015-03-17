@@ -9,6 +9,7 @@
 namespace Chencha\Conveyor\Exceptions;
 
 
-class StopProcessException {
+class StopProcessException extends \Exception
+{
 
 }

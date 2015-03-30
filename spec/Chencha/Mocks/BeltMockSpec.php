@@ -27,6 +27,6 @@ class BeltMockSpec extends ObjectBehavior
     {
         $machine = new MachineMock();
         $this->registerMachines($machine);
-        $this->getMachines()->toArray()->shouldBeLike([get_class($machine)=>$machine]);
+        $this->getMachines()->toArray()->shouldBeLike([spl_object_hash($machine)=>$machine]);
     }
 }

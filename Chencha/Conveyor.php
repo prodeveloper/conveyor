@@ -47,8 +47,13 @@ class Conveyor
         if (!isset($this->processes[$processName])) {
             throw new ProcessDoesNotExist("Undefined {$processName}");
         }
-        $this->processes[$processName]->setEngine(new Engine());
-        return $this->processes[$processName];
+        return $this->buildProcess($this->processes[$processName]);
+    }
+
+    function buildProcess(Process $process)
+    {
+        $process->setEngine(new Engine());
+        return $process;
     }
 
 }

@@ -35,7 +35,7 @@ abstract class Process
             if (!is_a(func_get_arg($i), Belt::class)) {
                 throw new InvalidBeltException(get_class(func_get_arg($i)) . " is not a valid belt");
             }
-            $this->belts->put(get_class(func_get_arg($i)), func_get_arg($i));
+            $this->belts->put(spl_object_hash(func_get_arg($i)), func_get_arg($i));
         }
 
     }

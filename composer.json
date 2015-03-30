@@ -18,6 +18,7 @@
     "illuminate/support": "~5.0",
     "jeremeamia/superclosure": "~2.0",
     "phpspec/phpspec": "~2.1@dev",
-    "symfony/var-dumper": "~2.6"
+    "symfony/var-dumper": "~2.6",
+    "symfony/yaml": "~2.7"
   }
 }

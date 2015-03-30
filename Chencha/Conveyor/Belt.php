@@ -36,7 +36,7 @@ abstract class Belt
             if (!is_a(func_get_arg($i), Machine::class)) {
                 throw new InvalidMachineException(get_class(func_get_arg($i)) . " is not a valid machine");
             }
-            $this->machines->put(get_class(func_get_arg($i)), func_get_arg($i));
+            $this->machines->put(spl_object_hash(func_get_arg($i)), func_get_arg($i));
         }
     }
 
